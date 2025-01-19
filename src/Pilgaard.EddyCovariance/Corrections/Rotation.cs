@@ -140,7 +140,6 @@ public static class Rotation
 
 	public static RotationMethod RecommendRotationMethod(
 		TerrainType terrain,
-		double averageWindSpeed,
 		double terrainSlope = 0)
 	{
 		// Based on common guidelines in flux literature
