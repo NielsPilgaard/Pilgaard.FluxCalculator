@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilgaard.EddyCovariance", "src\Pilgaard.EddyCovariance\Pilgaard.EddyCovariance.csproj", "{FBA2B16F-BC9D-4A7F-971F-4F8C1CCBEAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilgaard.EddyCovariance.Benchmarks", "benchmarks\Pilgaard.EddyCovariance.Benchmarks\Pilgaard.EddyCovariance.Benchmarks.csproj", "{9EDB4824-A38C-40C2-85C9-E06C48BFA856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilgaard.EddyCovariance.Tests", "tests\Pilgaard.EddyCovariance.Tests\Pilgaard.EddyCovariance.Tests.csproj", "{0D7B6D22-DD92-4B64-B4DE-8731DCE7F5C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{80DF0D67-D642-4424-8926-661BCAF26D62}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBA2B16F-BC9D-4A7F-971F-4F8C1CCBEAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA2B16F-BC9D-4A7F-971F-4F8C1CCBEAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA2B16F-BC9D-4A7F-971F-4F8C1CCBEAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA2B16F-BC9D-4A7F-971F-4F8C1CCBEAA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EDB4824-A38C-40C2-85C9-E06C48BFA856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EDB4824-A38C-40C2-85C9-E06C48BFA856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EDB4824-A38C-40C2-85C9-E06C48BFA856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EDB4824-A38C-40C2-85C9-E06C48BFA856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D7B6D22-DD92-4B64-B4DE-8731DCE7F5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D7B6D22-DD92-4B64-B4DE-8731DCE7F5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D7B6D22-DD92-4B64-B4DE-8731DCE7F5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D7B6D22-DD92-4B64-B4DE-8731DCE7F5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		FileExplorer = .github\
+	EndGlobalSection
+EndGlobal
