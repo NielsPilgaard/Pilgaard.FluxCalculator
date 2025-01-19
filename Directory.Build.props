@@ -1,21 +1,48 @@
 <Project>
 
-    <PropertyGroup Label="Shared Properties">
-        <LangVersion>latest</LangVersion>
-        <NoWarn>$(NoWarn);CS1701;CS1702;CS1591;AD0001;IDE1006;CS8625;IDE0058;IDE0028;</NoWarn>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    </PropertyGroup>
+	<PropertyGroup Label="Shared Properties">
+		<LangVersion>latest</LangVersion>
+		<NoWarn>$(NoWarn);CS1701;CS1702;CS1591;AD0001;IDE1006;CS8625;IDE0058;IDE0028;</NoWarn>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
 
-    <ItemGroup Label="Exposing Internals to Test Projects">
-        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-            <_Parameter1>$(MSBuildProjectName).Tests</_Parameter1>
-        </AssemblyAttribute>
-        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-            <_Parameter1>$(MSBuildProjectName).Benchmarks</_Parameter1>
-        </AssemblyAttribute>
-    </ItemGroup>
+	<ItemGroup Label="Exposing Internals to Test Projects">
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>$(MSBuildProjectName).Tests</_Parameter1>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>$(MSBuildProjectName).Benchmarks</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+	<PropertyGroup Label="Package information">
+		<Authors>Niels Pilgaard</Authors>
+		<Copyright>Copyright Niels Pilgaard</Copyright>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageIcon>logo_128x128.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>None</PackageLicenseExpression>
+		<MinVerIgnoreHeight>true</MinVerIgnoreHeight>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<DebugType>embedded</DebugType>
+		<Deterministic>true</Deterministic>
+		<RepositoryUrl>https://github.com/NielsPilgaard/Pilgaard.EddyCovariance</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/NielsPilgaard/Pilgaard.EddyCovariance</PackageProjectUrl>
+		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(IsPackable)' == 'true'">
+		<IsTrimmable>true</IsTrimmable>
+	</PropertyGroup>
+
+	<ItemGroup Label="Shared Files and Packages for Nugets" Condition="'$(IsPackable)' == 'true'">
+		<None Include="README.md" Pack="true" PackagePath="" />
+		<None Include="../../assets/logo/logo_128x128.png" Pack="true" PackagePath="" />
+		<PackageReference Include="MinVer" Version="6.0.0" PrivateAssets="All" />
+	</ItemGroup>
 
 </Project>

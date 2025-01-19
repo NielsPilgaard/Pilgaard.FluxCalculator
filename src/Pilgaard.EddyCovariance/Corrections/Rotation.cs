@@ -1,7 +1,8 @@
 ﻿namespace Pilgaard.EddyCovariance.Corrections;
 
-public static class RotationCorrection
+public static class Rotation
 {
+	// TODO: Make configurable
 	// Thresholds based on literature and common practice
 	private const double VeryLowWindSpeed = 0.05; // m/s - may need special handling
 	private const double LowWindSpeed = 0.3; // m/s - flag but process
@@ -152,8 +153,10 @@ public static class RotationCorrection
 	}
 
 	internal static RotationCorrectionResult ApplyCoordinateRotation(
-		ReadOnlySpan<double> u, ReadOnlySpan<double> v, ReadOnlySpan<double> w,
-		RotationMethod method = RotationMethod.PlanarFit)
+		ReadOnlySpan<double> u,
+		ReadOnlySpan<double> v,
+		ReadOnlySpan<double> w,
+		RotationMethod method)
 	{
 		var length = u.Length;
 		var qualityFlags = RotationQualityFlags.Valid;
@@ -234,4 +237,47 @@ public static class RotationCorrection
 				=> RotationQualityFlags.ExtremeRotationAngle,
 			_ => RotationQualityFlags.None
 		};
+}
+
+public readonly ref struct RotationCorrectionResult
+{
+	public required ReadOnlySpan<double> RotatedU { get; init; }
+	public required ReadOnlySpan<double> RotatedV { get; init; }
+	public required ReadOnlySpan<double> RotatedW { get; init; }
+	public required double AlphaDegrees { get; init; }
+	public required double BetaDegrees { get; init; }
+	public required RotationQualityFlags QualityFlags { get; init; }
+}
+
+public enum RotationMethod
+{
+	DoubleRotation,
+	PlanarFit
+}
+
+[Flags]
+public enum RotationQualityFlags
+{
+	None = 0,
+	Valid = 1,
+	LowWindSpeed = 1 << 1,
+	ExtremeRotationAngle = 1 << 2,
+	SingularMatrix = 1 << 3,
+	ComplexTerrain = 1 << 4
+}
+
+internal readonly ref struct RotationResult
+{
+	public ReadOnlySpan<double> RotatedU { get; init; }
+	public ReadOnlySpan<double> RotatedV { get; init; }
+	public ReadOnlySpan<double> RotatedW { get; init; }
+	public (double Alpha, double Beta) Angles { get; init; }
+}
+
+public enum TerrainType
+{
+	Flat,
+	Rolling,
+	Complex,
+	Urban
 }

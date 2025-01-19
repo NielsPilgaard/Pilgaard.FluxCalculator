@@ -1,0 +1,52 @@
+name: Pilgaard EddyCovariance Continuous Integration
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - src/Pilgaard.EddyCovariance/**
+      - tests/Pilgaard.EddyCovariance.Tests/**
+      - tests/ApiApprovalTests.cs
+      - .github/workflows/EddyCovariance.yml
+      - Directory.Build.props
+
+  pull_request:
+    branches: [main]
+    paths:
+      - src/Pilgaard.EddyCovariance/**
+      - tests/Pilgaard.EddyCovariance.Tests/**
+      - tests/ApiApprovalTests.cs
+      - .github/workflows/EddyCovariance.yml
+      - Directory.Build.props
+
+jobs:
+  test:
+    # Don't run the action if it was triggered by a tag push
+    if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
+
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup dotnet 9.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Restore NuGet packages
+        run: dotnet restore ./tests/Pilgaard.EddyCovariance.Tests/Pilgaard.EddyCovariance.Tests.csproj
+
+      - name: Build
+        run: dotnet build ./tests/Pilgaard.EddyCovariance.Tests/Pilgaard.EddyCovariance.Tests.csproj --no-restore
+
+      - name: Run Test
+        run: >
+          dotnet test ./tests/Pilgaard.EddyCovariance.Tests/Pilgaard.EddyCovariance.Tests.csproj --no-build --no-restore
+          --logger "GitHubActions;summary.includePassedTests=true;summary.includeSkippedTests=true" 
+          --filter Category!=SkipInCI
