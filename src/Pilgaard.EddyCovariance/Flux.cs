@@ -2,17 +2,7 @@
 using Pilgaard.EddyCovariance.Corrections;
 
 namespace Pilgaard.EddyCovariance;
-public class FluxCalculationOptions
-{
-	/// <summary>
-	/// Required for performing Flux Footprint Quality Control.
-	/// </summary>
-	public double? MeasurementHeightMeters { get; set; }
 
-	public double? RoughnessLengthMeters { get; set; }
-
-	public RotationMethod RotationMethod { get; set; } = RotationMethod.DoubleRotation;
-}
 public static class Flux
 {
 	// TODO: Make configurable
@@ -26,7 +16,7 @@ public static class Flux
 		ReadOnlySpan<double> vWind,
 		ReadOnlySpan<double> wWind,
 		ReadOnlySpan<double> sonicTemp,
-		Action<FluxCalculationOptions>? configurator = null) // meters
+		Action<FluxCalculationOptions>? configurator = null)
 	{
 		var options = new FluxCalculationOptions();
 		configurator?.Invoke(options);
@@ -131,4 +121,16 @@ public static class Flux
 
 	internal static double CalculateFlux(double covariance)
 		=> AirDensity * SpecificHeatCapacity * covariance;
+}
+
+public class FluxCalculationOptions
+{
+	/// <summary>
+	/// Required for performing Flux Footprint Quality Control.
+	/// </summary>
+	public double? MeasurementHeightMeters { get; set; }
+
+	public double? RoughnessLengthMeters { get; set; }
+
+	public RotationMethod RotationMethod { get; set; } = RotationMethod.DoubleRotation;
 }
