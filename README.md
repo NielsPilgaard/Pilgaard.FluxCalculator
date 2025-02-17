@@ -1,5 +1,7 @@
 # Pilgaard.EddyCovariance
 
+**Disclaimer: Not ready for use!**
+
 A .NET library for processing eddy covariance data, focusing on accurate calculation of surface-atmosphere fluxes. Currently implements sensible heat flux calculations with standard corrections and quality control procedures.
 
 ## Features
