@@ -1,4 +1,6 @@
-**Disclaimer: Not ready for use!**
+# Disclaimer: Not ready for use!
+
+---
 
 # Pilgaard.FluxCalculator
 
