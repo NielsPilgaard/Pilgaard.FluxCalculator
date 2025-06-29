@@ -1,6 +1,6 @@
-# Pilgaard.EddyCovariance
-
 **Disclaimer: Not ready for use!**
+
+# Pilgaard.FluxCalculator
 
 A .NET library for processing eddy covariance data, focusing on accurate calculation of surface-atmosphere fluxes. Currently implements sensible heat flux calculations with standard corrections and quality control procedures.
 
@@ -18,13 +18,13 @@ A .NET library for processing eddy covariance data, focusing on accurate calcula
 ## Installation
 
 ```bash
-dotnet add package Pilgaard.EddyCovariance
+dotnet add package Pilgaard.FluxCalculator
 ```
 
 ## Quick Start
 
 ```csharp
-using Pilgaard.EddyCovariance;
+using Pilgaard.FluxCalculator;
 
 // Assuming 30 minutes of 10Hz data
 var fluxResult = FluxCalculator.CalculateSensibleHeatFlux(
@@ -122,11 +122,11 @@ This package implements methods developed by the eddy covariance community over 
 If you use this package in your research, please cite both the package and the relevant methodological papers listed above.
 
 ```bibtex
-@software{pilgaard_eddycovariance_2024,
+@software{pilgaard_FluxCalculator_2024,
   author       = {Pilgaard, Niels},
-  title        = {Pilgaard.EddyCovariance: A .NET Library for Eddy Covariance Calculations},
+  title        = {Pilgaard.FluxCalculator: A .NET Library for Eddy Covariance Calculations},
   year         = {2024},
   publisher    = {GitHub},
-  url          = {https://github.com/NielsPilgaard/Pilgaard.EddyCovariance}
+  url          = {https://github.com/NielsPilgaard/Pilgaard.FluxCalculator}
 }
 ```
